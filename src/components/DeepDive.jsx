@@ -1,7 +1,16 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import PlaceholderDialog from './PlaceholderDialog'
 
 function DeepDive() {
   const { id } = useParams()
+  const [showDialog, setShowDialog] = useState(false)
+  const [dialogConfig, setDialogConfig] = useState({})
+
+  const showPlaceholderDialog = (title, message, type = 'info') => {
+    setDialogConfig({ title, message, type })
+    setShowDialog(true)
+  }
   
   // Mock detailed data for agenda items
   const agendaDetails = {
@@ -220,11 +229,35 @@ The department is requesting additional $500K for body camera replacement progra
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
               <div className="space-y-3">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors">
+                <button 
+                  onClick={() => showPlaceholderDialog(
+                    "Add to Watchlist",
+                    "This feature would add this agenda item to your personal watchlist. You'd receive notifications about any updates, changes, or related documents. Items in your watchlist would appear in a dedicated section of your dashboard.",
+                    "info"
+                  )}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+                >
                   Add to Watchlist
                 </button>
-                <button className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-lg transition-colors">
+                <button 
+                  onClick={() => showPlaceholderDialog(
+                    "Set Reminder",
+                    "This feature would let you set custom reminders for this specific meeting. You could choose notification timing (1 hour, 1 day, 1 week before) and delivery method (email, SMS, push notification).",
+                    "info"
+                  )}
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-lg transition-colors"
+                >
                   Set Reminder
+                </button>
+                <button
+                  onClick={() => showPlaceholderDialog(
+                    "Request Documents",
+                    "This feature would allow you to request access to additional documents related to this agenda item. You could submit FOIA requests, contact meeting organizers, or request public records directly through the platform.",
+                    "warning"
+                  )}
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-lg transition-colors"
+                >
+                  Request Documents
                 </button>
                 <Link 
                   to="/export"
@@ -237,6 +270,15 @@ The department is requesting additional $500K for body camera replacement progra
           </div>
         </div>
       </main>
+
+      {/* Placeholder Dialog */}
+      <PlaceholderDialog
+        isOpen={showDialog}
+        onClose={() => setShowDialog(false)}
+        title={dialogConfig.title}
+        message={dialogConfig.message}
+        type={dialogConfig.type}
+      />
     </div>
   )
 }

@@ -1,6 +1,16 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PlaceholderDialog from './PlaceholderDialog'
 
 function DailyWorkflow() {
+  const [showDialog, setShowDialog] = useState(false)
+  const [dialogConfig, setDialogConfig] = useState({})
+
+  const showPlaceholderDialog = (title, message, type = 'info') => {
+    setDialogConfig({ title, message, type })
+    setShowDialog(true)
+  }
+
   // Mock agenda data
   const agendaItems = [
     {
@@ -198,11 +208,40 @@ function DailyWorkflow() {
                 >
                   Update Preferences
                 </Link>
+                <button
+                  onClick={() => showPlaceholderDialog(
+                    "Set Reminder",
+                    "This feature would allow you to set custom reminders for upcoming meetings. You could choose to be notified 1 hour, 1 day, or 1 week before each meeting, with options for email, SMS, or push notifications.",
+                    "info"
+                  )}
+                  className="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-2 px-4 rounded-lg transition-colors"
+                >
+                  Set Reminder
+                </button>
+                <button
+                  onClick={() => showPlaceholderDialog(
+                    "Share Feed",
+                    "This feature would let you share your personalized agenda feed with colleagues or embed it in other applications. You could generate shareable links or export feeds in RSS format.",
+                    "info"
+                  )}
+                  className="block w-full bg-purple-600 hover:bg-purple-700 text-white text-center py-2 px-4 rounded-lg transition-colors"
+                >
+                  Share Feed
+                </button>
               </div>
             </div>
           </div>
         </div>
       </main>
+
+      {/* Placeholder Dialog */}
+      <PlaceholderDialog
+        isOpen={showDialog}
+        onClose={() => setShowDialog(false)}
+        title={dialogConfig.title}
+        message={dialogConfig.message}
+        type={dialogConfig.type}
+      />
     </div>
   )
 }

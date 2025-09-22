@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PlaceholderDialog from './PlaceholderDialog'
 
 function AccountSetup() {
   const [selectedTopics, setSelectedTopics] = useState([])
   const [keywords, setKeywords] = useState('')
   const [location, setLocation] = useState('')
+  const [showDialog, setShowDialog] = useState(false)
+  const [dialogConfig, setDialogConfig] = useState({})
 
   const topicOptions = [
     'Housing & Development',
@@ -31,6 +34,11 @@ function AccountSetup() {
     e.preventDefault()
     // In a real app, this would save to backend
     console.log('Preferences saved:', { selectedTopics, keywords, location })
+  }
+
+  const showPlaceholderDialog = (title, message, type = 'info') => {
+    setDialogConfig({ title, message, type })
+    setShowDialog(true)
   }
 
   return (
@@ -128,16 +136,37 @@ function AccountSetup() {
               >
                 ← Back to Dashboard
               </Link>
-              <Link
-                to="/daily-workflow"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
-              >
-                Complete Setup →
-              </Link>
+              <div className="space-x-3">
+                <button
+                  onClick={() => showPlaceholderDialog(
+                    "Save Draft",
+                    "This feature would save your preferences as a draft and allow you to return later to complete the setup. In the full version, drafts would be automatically saved and synced across devices.",
+                    "info"
+                  )}
+                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+                >
+                  Save Draft
+                </button>
+                <Link
+                  to="/daily-workflow"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+                >
+                  Complete Setup →
+                </Link>
+              </div>
             </div>
           </form>
         </div>
       </main>
+
+      {/* Placeholder Dialog */}
+      <PlaceholderDialog
+        isOpen={showDialog}
+        onClose={() => setShowDialog(false)}
+        title={dialogConfig.title}
+        message={dialogConfig.message}
+        type={dialogConfig.type}
+      />
     </div>
   )
 }
