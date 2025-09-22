@@ -3,10 +3,7 @@
     "api/**/*.py": {
       "runtime": "vercel-python@3.11"
     }
-  },
-  "routes": [
-    { "src": "/", "dest": "/api/hello" }
-  ]
+  }
 }
 
 
