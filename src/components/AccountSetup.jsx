@@ -42,43 +42,29 @@ function AccountSetup() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link to="/" className="text-xl font-bold text-gray-900">
-              CivicPulse
-            </Link>
-            <div className="text-sm text-gray-500">
-              Account Setup
-            </div>
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-slate-50">
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-2xl mx-auto px-6 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-slate-900 mb-3">
             Welcome to CivicPulse, John
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-slate-600">
             Let's personalize your news discovery experience
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border p-8">
+        <div className="card p-8">
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Location */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 mb-3">
                 Primary Coverage Area
               </label>
               <select 
                 value={location} 
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full"
                 required
               >
                 <option value="">Select your coverage area</option>
@@ -93,19 +79,19 @@ function AccountSetup() {
 
             {/* Topic Tags */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-slate-700 mb-3">
                 Topics of Interest (Select all that apply)
               </label>
               <div className="grid grid-cols-2 gap-3">
                 {topicOptions.map(topic => (
-                  <label key={topic} className="flex items-center space-x-2 cursor-pointer">
+                  <label key={topic} className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-slate-50 transition-colors">
                     <input
                       type="checkbox"
                       checked={selectedTopics.includes(topic)}
                       onChange={() => toggleTopic(topic)}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="text-sm text-gray-700">{topic}</span>
+                    <span className="text-sm text-slate-700">{topic}</span>
                   </label>
                 ))}
               </div>
@@ -113,43 +99,43 @@ function AccountSetup() {
 
             {/* Keywords */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 mb-3">
                 Keywords to Monitor
               </label>
               <textarea
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="Enter keywords separated by commas (e.g., affordable housing, police reform, budget cuts)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full"
                 rows="3"
               />
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-slate-500 mt-2">
                 These keywords will help us surface relevant agenda items and documents
               </p>
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-between items-center pt-6 border-t">
+            <div className="flex justify-between items-center pt-6 border-t border-slate-200">
               <Link 
                 to="/reporter" 
                 className="text-blue-600 hover:text-blue-700 font-medium"
               >
                 ← Back to Dashboard
               </Link>
-              <div className="space-x-3">
+              <div className="flex gap-3">
                 <button
                   onClick={() => showPlaceholderDialog(
                     "Save Draft",
                     "This feature would save your preferences as a draft and allow you to return later to complete the setup. In the full version, drafts would be automatically saved and synced across devices.",
                     "info"
                   )}
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+                  className="btn-secondary px-6 py-2"
                 >
                   Save Draft
                 </button>
                 <Link
                   to="/daily-workflow"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+                  className="btn-primary px-6 py-2"
                 >
                   Complete Setup →
                 </Link>
