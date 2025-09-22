@@ -6,10 +6,10 @@ A comprehensive React web application prototype for CivicPulse, demonstrating a 
 
 ## Project Details
 
-- **Student Name:** [INSERT]
-- **GitHub Username:** [INSERT]
+- **Student Name:** Ashwanth Samuel
+- **GitHub Username:** ashwanth-eth
 - **Deployed URL:** https://ashwanth-eth-hw3-main-8dh74jgbl.vercel.app
-- **PRD URL:** [INSERT]
+- **PRD URL:** https://drive.google.com/file/d/1ULET7aF2T_C3-sMmDHyVD2Qh03RiFXZT/view?usp=sharing
 
 ## Overview
 
