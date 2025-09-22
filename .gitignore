@@ -10,3 +10,4 @@ __pycache__/
 
 # Node (if used locally)
 node_modules/
+.vercel
