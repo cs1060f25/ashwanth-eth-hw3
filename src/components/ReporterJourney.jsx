@@ -28,22 +28,27 @@ function ReporterJourney() {
           </p>
         </div>
 
-        {/* Placeholder for reporter journey */}
+        {/* Welcome to John's Journey */}
         <div className="bg-gray-50 rounded-lg p-8 text-center">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
-            Reporter Journey Coming Soon
+            Welcome to Your CivicPulse Journey
           </h2>
           <p className="text-gray-600 mb-6">
-            This is where John's complete user journey will be implemented, 
-            including story discovery, trend analysis, and reporting tools.
+            Let's set up your personalized news discovery experience and explore the complete reporter workflow.
           </p>
           <div className="space-x-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors">
-              Discover Stories
-            </button>
-            <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-lg transition-colors">
-              View Trends
-            </button>
+            <Link 
+              to="/account-setup"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+            >
+              Start Setup →
+            </Link>
+            <Link 
+              to="/daily-workflow"
+              className="inline-block bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-lg transition-colors"
+            >
+              Skip to Dashboard
+            </Link>
           </div>
         </div>
 
