@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Vercel
+.vercel/
+
+# macOS
+.DS_Store
+
+# Node (if used locally)
+node_modules/
