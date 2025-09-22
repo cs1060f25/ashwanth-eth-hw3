@@ -1,4 +1,3 @@
-import React from 'react'
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import ReporterJourney from './components/ReporterJourney'
